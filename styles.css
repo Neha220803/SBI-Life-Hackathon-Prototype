@@ -4,7 +4,7 @@
 
 .sidebar {
     width: var(--sidebar-width);
-    background-color: #7020a1;
+    background: linear-gradient(to bottom, #D81C52, #A41D5C, #5B1E6B);
     height: 100vh;
     position: fixed;
     color: white;

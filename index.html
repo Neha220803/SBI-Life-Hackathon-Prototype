@@ -4,88 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SBI Life - Fraud Analytics Dashboard</title>
+    <link href="styles.css" rel="stylesheet" type="text/css">
     <!-- Bootstrap CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
     <!-- DataTables CSS -->
     <link href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css" rel="stylesheet">
-    <style>
-        :root {
-            --sidebar-width: 250px;
-        }
-        
-        .sidebar {
-            width: var(--sidebar-width);
-            background: linear-gradient(to bottom, #D81C52, #A41D5C, #5B1E6B);
-            height: 100vh;
-            position: fixed;
-            color: white;
-            padding: 20px 0;
-        }
-
-        #side-bar-heading {
-            color: white;
-            font-size: 24px;
-            font-weight: bold;
-            text-align: center;
-        }
-
-        .nav-items {
-            list-style: none;
-            padding: 0;
-        }
-
-        .nav-item {
-            padding: 15px 20px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .nav-item:hover {
-            background-color: rgba(255,255,255,0.1);
-        }
-
-        .nav-item.active {
-            background-color: rgba(255,255,255,0.2);
-        }
-
-        .main-content {
-            margin-left: var(--sidebar-width);
-            padding: 20px;
-        }
-
-        .metric-card {
-            border-radius: 10px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .chart-container {
-            background: white;
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .alert-ticker {
-            max-height: 300px;
-            overflow-y: auto;
-        }
-
-        @media (max-width: 768px) {
-            .sidebar {
-                width: 60px;
-            }
-            .nav-item span {
-                display: none;
-            }
-            .main-content {
-                margin-left: 60px;
-            }
-        }
-    </style>
 </head>
 <body class="bg-light">
     <!-- Sidebar -->
@@ -296,86 +219,6 @@
     <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     
-    <script>
-        // Initialize Charts
-        const trendChart = new Chart(document.getElementById('trendChart'), {
-            type: 'line',
-            data: {
-                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
-                datasets: [{
-                    label: 'Total Claims',
-                    data: [500, 590, 610, 560, 580, 600],
-                    borderColor: '#0d6efd'
-                }, {
-                    label: 'Fraudulent Claims',
-                    data: [50, 55, 45, 60, 58, 54],
-                    borderColor: '#dc3545'
-                }]
-            },
-            options: {
-                responsive: true
-            }
-        });
-
-        const accuracyChart = new Chart(document.getElementById('accuracyChart'), {
-            type: 'doughnut',
-            data: {
-                labels: ['True Positives', 'False Positives', 'False Negatives'],
-                datasets: [{
-                    data: [70, 20, 10],
-                    backgroundColor: ['#198754', '#ffc107', '#dc3545']
-                }]
-            }
-        });
-
-        const categoryChart = new Chart(document.getElementById('categoryChart'), {
-            type: 'bar',
-            data: {
-                labels: ['North', 'South', 'East', 'West'],
-                datasets: [{
-                    label: 'Signature Forgery',
-                    data: [20, 15, 25, 18],
-                    backgroundColor: '#0d6efd'
-                }, {
-                    label: 'Document Tampering',
-                    data: [15, 20, 15, 22],
-                    backgroundColor: '#dc3545'
-                }, {
-                    label: 'Multiple Claims',
-                    data: [10, 12, 8, 15],
-                    backgroundColor: '#198754'
-                }]
-            },
-            options: {
-                responsive: true,
-                scales: {
-                    x: {
-                        stacked: true
-                    },
-                    y: {
-                        stacked: true
-                    }
-                }
-            }
-        });
-
-        // Initialize DataTable
-        $(document).ready(function() {
-            $('#fraudTable').DataTable({
-                pageLength: 5,
-                lengthMenu: [[5, 10, 25, 50], [5, 10, 25, 50]]
-            });
-        });
-
-        // Dark Mode Toggle
-        let darkMode = false;
-        document.getElementById('toggleTheme').addEventListener('click', function() {
-            darkMode = !darkMode;
-            document.body.classList.toggle('bg-dark');
-            document.body.classList.toggle('text-white');
-            this.innerHTML = darkMode ? '☀️ Light Mode' : '🌙 Dark Mode';
-            // Update charts theme here
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
